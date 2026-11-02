@@ -30,7 +30,7 @@ jobs:
       - name: Subir Javadoc
         uses: actions/upload-pages-artifact@v3
         with:
-          path: javadoc
+          path: docs
 
   deploy:
     environment:
