@@ -1,0 +1,46 @@
+
+name: publicar javadoc
+
+on:
+  push:
+    branches: 
+    - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar código fuente
+        uses: actions/checkout@v4
+
+      - name: Configurar JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Generar Javadoc && javadoc -d javadoc -sourcepath ProyectoJavadoc/ProyectoJavadoc/src -subpackages gestionPersonas
+
+      - name: Subir Javadoc
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: javadoc
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+
+    steps:
+      - name: Desplegar
+        id: deployment
+        uses: actions/deploy-pages@v4
