@@ -25,7 +25,7 @@ jobs:
           java-version: '17'
 
       - name: Generar Javadoc
-        run: mkdir -p javadoc && javadoc -d javadoc -sourcepath ProyectoJavadoc/ProyectoJavadoc/src -subpackages gestionPersonas
+        run: mkdir -p docs && javadoc -d docs -sourcepath ProyectoJavadoc/ProyectoJavadoc/src -subpackages gestionPersonas
 
       - name: Subir Javadoc
         uses: actions/upload-pages-artifact@v3
