@@ -3,8 +3,7 @@ name: publicar javadoc
 
 on:
   push:
-    branches: 
-    - main
+    branches: [ main ]
 
 permissions:
   contents: read
@@ -25,7 +24,8 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Generar Javadoc && javadoc -d javadoc -sourcepath ProyectoJavadoc/ProyectoJavadoc/src -subpackages gestionPersonas
+      - name: Generar Javadoc
+        run: mkdir -p javadoc && javadoc -d javadoc -sourcepath ProyectoJavadoc/ProyectoJavadoc/src -subpackages gestionPersonas
 
       - name: Subir Javadoc
         uses: actions/upload-pages-artifact@v3
@@ -33,14 +33,13 @@ jobs:
           path: javadoc
 
   deploy:
-    runs-on: ubuntu-latest
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
     needs: build
 
     steps:
-      - name: Desplegar
+      - name: Desplegar en GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
