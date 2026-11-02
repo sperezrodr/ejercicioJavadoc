@@ -23,39 +23,39 @@ public class Persona {
     }
 
     /**
-     * Método getter
-     * @return devuelve nombre
+     * Método getter para obtener el nombre de la persona
+     * @return devuelve nombre en formato string
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     * Método setter
-     * @param nombre Permite asignar valor a nombre
+     * Método setter para poner el nombre de la persona
+     * @param nombre Nombre de la persona en formato string
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
-     * Método getter
-     * @return devuelve edad
+     * Método getter para obtener la edad de la persona
+     * @return devuelve edad en formato int
      */
     public int getEdad() {
         return edad;
     }
 
     /**
-     * Método setter
-     * @param edad Permite asignar un valor a edad
+     * Método setter para poner la edad de la persona
+     * @param edad Edad de la persona en formato int
      */
     public void setEdad(int edad) {
         this.edad = edad;
     }
 
     /**
-     * Método que muestra los valores por pantalla
+     * Método que muestra el nombre y la edad de la persona por pantalla
      */
     public void mostrarInformacion() {
         System.out.println("Nombre: " + nombre + ", Edad: " + edad);
